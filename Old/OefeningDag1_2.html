@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<html>
+<head>
+
+<script>
+
+	var counterkolom = [0,0,0,0,0];
+	var kleur = 0;
+	function latenvallen( kolom ){
+		console.log(kolom, counterkolom[kolom]);
+		var color;
+		if(kleur==0){
+			color = 'red';
+			kleur = 1;
+		}else{
+			color = 'green';
+			kleur = 0;
+		}
+		document.getElementById("vakje"+kolom +""+ counterkolom[kolom]).style.backgroundColor = color;
+		counterkolom[kolom]++;
+	}
+	function arrayuitvoeren(){
+		getalarray[3]++;
+		alert( getalarray[3] );
+	}
+
+</script>
+</head>
+<body>
+
+
+</body>
+	<input type="button" onclick=arrayuitvoeren() value=arraychecken>
+	<table >
+		<tr>
+			<td id=vakje04 onclick=latenvallen(0)>X</td>
+			<td id=vakje14 onclick=latenvallen(1)>X</td>
+			<td id=vakje24 onclick=latenvallen(2)>X</td>
+			<td id=vakje34 onclick=latenvallen(3)>X</td>
+			<td id=vakje44 onclick=latenvallen(4)>X</td>
+		</tr>
+		<tr>
+			<td id=vakje03 onclick=latenvallen(0)>X</td>
+			<td id=vakje13 onclick=latenvallen(1)>X</td>
+			<td id=vakje23 onclick=latenvallen(2)>X</td>
+			<td id=vakje33 onclick=latenvallen(3)>X</td>
+			<td id=vakje43 onclick=latenvallen(4)>X</td>
+		</tr>
+		<tr>
+			<td id=vakje02 onclick=latenvallen(0)>X</td>
+			<td id=vakje12 onclick=latenvallen(1)>X</td>
+			<td id=vakje22 onclick=latenvallen(2)>X</td>
+			<td id=vakje32 onclick=latenvallen(3)>X</td>
+			<td id=vakje42 onclick=latenvallen(4)>X</td>
+		</tr>
+		<tr>
+			<td id=vakje01 onclick=latenvallen(0)>X</td>
+			<td id=vakje11 onclick=latenvallen(1)>X</td>
+			<td id=vakje21 onclick=latenvallen(2)>X</td>
+			<td id=vakje31 onclick=latenvallen(3)>X</td>
+			<td id=vakje41 onclick=latenvallen(4)>X</td>
+		</tr>
+		<tr>
+			<td id=vakje00 onclick=latenvallen(0)>X</td>
+			<td id=vakje10 onclick=latenvallen(1)>X</td>
+			<td id=vakje20 onclick=latenvallen(2)>X</td>
+			<td id=vakje30 onclick=latenvallen(3)>X</td>
+			<td id=vakje40 onclick=latenvallen(4)>X</td>
+		</tr>
+	</table>
+</html>
+
+
