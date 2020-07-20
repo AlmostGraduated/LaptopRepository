@@ -16,16 +16,16 @@
 <body onload= "hideGameField();">
     <center>
         <div id="playerNamesDiv">
-            <label id = "labeltext" for="nameP1">Name Player 1:</label>
-            <input type="text" id="name1" name="nameP1">
-            <input id = "confirmationButton" type="button" value="Click to confirm name player 1" onclick="confirmName(1)"></input>
+            <label id = "labeltext" for="nameP1">Player 1:</label>
+            <input type="text" id="name1" name="nameP1" onkeyup="this.value = this.value.toUpperCase();">
+            <input id = "confirmationButton" type="button" value="Click to confirm" onclick="confirmName(1)"></input>
         
             <br><br>
         
         
-            <label id = "labeltext" for="nameP2">Name Player 2:</label>
-            <input type="text" id="name2" name="nameP2">
-            <input id = "confirmationButton" type="button" value="Click to confirm name player 2" onclick="confirmName(2)"></input>
+            <label id = "labeltext" for="nameP2">Player 2:</label>
+            <input type="text" id="name2" name="nameP2" onkeyup="this.value = this.value.toUpperCase();">
+            <input id = "confirmationButton" type="button" value="Click to confirm" onclick="confirmName(2)"></input>
             <br><br>
 
         </div>
@@ -44,6 +44,12 @@
             
             <p id = "P2"></p>
         </div>
+
+        <div id="endOfGame">
+            <button onClick="window.location.reload();">Next game</button>
+        </div>
+
+
 
     </center>
     

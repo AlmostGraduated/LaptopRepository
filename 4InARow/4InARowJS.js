@@ -10,12 +10,15 @@ var nrOfColumns = 7;
 var seqStonesToWin = 4;
 var colHeight= [-1,-1,-1,-1,-1,-1,-1];
 var counter = 0;
+var startColor = 'blue';
+var secondColor = 'red';
+var winningColor = "rgba(6, 224, 38, 0.57)";
 var colorLastMove;
 var colorUpcomingMove;
 var field = [[-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1]]; //red or blue or -1
 var weHaveAWinner = false;
 var onclickIgnore = false;
-
+var abort = false;
 
 //Player name entry behaviour
 function confirmName(player){
@@ -31,11 +34,7 @@ function confirmName(player){
 		}
 	}
 	if(p1Filed && p2Filed){
-		alert("Welcome " + namePlayerOne + " and " + namePlayerTwo + "!");
 		hidePlayerNames();
-	}
-	else{
-		alert("Please file and confirm both names.");
 	}
 }
 
@@ -55,13 +54,13 @@ function hideGameField(){
 function showGameField(){
 	document.getElementById("playGridId").style.display="";    
 	document.getElementById("boxed").style.display="";
-	document.getElementById("P1").innerHTML = "<span style='color: blue;'>Player 1: " + namePlayerOne + "</span>";
-	document.getElementById("P2").innerHTML = "<span style='color: red;'>Player 2: " + namePlayerTwo + "</span>";
+	document.getElementById("P1").innerHTML = "<span style='color:" + startColor + ";'>Player 1: " + namePlayerOne + "</span>";
+	document.getElementById("P2").innerHTML = "<span style='color:" + secondColor + ";'>Player 2: " + namePlayerTwo + "</span>";
 }
 
 // Highlight cell upon mousehover
 function highlight(col){
-	if((colorUpcomingMove == "blue") || (counter == 0)){ //It is blue's turn (blue also starts the game)
+	if((colorUpcomingMove == startColor) || (counter == 0)){ //It is blue's turn (blue also starts the game)
 		for(i = colHeight[col]+1; i < nrOfRows; i++){
 			document.getElementById("cell"+ col + "" + i).style.backgroundColor = "rgba(137, 188, 235, 0.63)"
 		}
@@ -80,44 +79,45 @@ function highlightOff(x,col,row){
 		for(i = colHeight[col]+1; i < nrOfRows; i++){
 			document.getElementById("cell" + col + "" + i).style.backgroundColor = "rgba(255, 255, 255, 0.8)";
 		}
-		// x.style.backgroundColor = "rgba(255, 255, 255, 0.8)";
+		x.style.backgroundColor = "rgba(255, 255, 255, 0.8)";
 	}    
 }
 
 
 // Main algo for playing the game
 function algoStart(z,col,row){
-	if(!onclickIgnore){
-		onclickIgnore = true;
+	if(abort==false){
 		var curColHeight = colHeight[col];                  //col height before token drop update
 		if(validSelection(curColHeight)){                   //column is not yet full
 			counter++;
 			if(counter % 2 != 0){                           // uneven number == blue, 
-				colorLastMove = 'blue'; 
-				colorUpcomingMove = 'red';
+				colorLastMove = startColor; 
+				colorUpcomingMove = secondColor;
 			}else{                                          //even number == red
-				colorLastMove = 'red';
-				colorUpcomingMove = 'blue';
+				colorLastMove = secondColor;
+				colorUpcomingMove = startColor;
 			}
 			tokenDrop(z, col,curColHeight);                   // drop animation + update field
 			
-			if(winCheck(col,curColHeight)){
-				setTimeout(function(){alert("Congratulations, you have won the game!")},250);
-		
+			var [winnerQ, winningCells] = winCheck(col,curColHeight);
+			console.log(winnerQ);
+			if(winnerQ){
+				document.getElementById("P1").innerHTML = "<span style='color:" + startColor + ";'>" + namePlayerOne + " --YOU WIN--" + "</span>";
+				document.getElementById("P2").innerHTML = "<span style='color:" + secondColor + ";'>" + namePlayerTwo + " --YOU LOSE--" + "</span>";
+				document.getElementById("boxed").style.backgroundColor = winningColor;
+				// document.getElementById("cell" + col + "" + (curColHeight+1)).style.backgroundColor = winningColor;
+				abort = true;
+				// randomWinningColors(winningCells);
 			}else if(counter == 42){
 				alert("The game has ended in a tie");
 			}
 		}else{                                              // column is full
 			alert("This is not a valid move");
 		}
-		onclickIgnore = false;
-	}else{
-		return;
 	}
 	
-	
-	
 }
+
 // Check whether column is full or not
 function validSelection(curColHeight){
 	if(curColHeight < 5){
@@ -138,7 +138,6 @@ function tokenDrop(z, col, curColHeight){
 }
 
 function dropAnimation(col){
-	var totBlocksToDraw = nrOfRows - (colHeight[col] + 1);
 	tempCount = 0;
 	for(i=nrOfRows -1; i>colHeight[col]+1; i--){
 		tempCount++;
@@ -180,21 +179,25 @@ function winCheck(col, curColHeight){
 	diagLeftDown(col,curColHeight,winArrayDiagDownUp);
 	arrayLists = [winArrayHor,winArrayVer,winArrayDiagUpDown,winArrayDiagDownUp];
 	// console.log(JSON.stringify(arrayLists));
-	if(visualizeWinningTokens(arrayLists)){
-		return true;
+	var [someBool, newArray] = visualizeWinningTokens(arrayLists);
+	if(someBool){
+		return [true,newArray];
 	}
-	return false;
+	return [false,newArray];
 }
 
 function visualizeWinningTokens(arrayLists){
 	var successCount = 0;
+	var onlyWinningSeq =[];
 	
 	for(i=0;i<arrayLists.length;i++){
 		if(arrayLists[i].length >= 4){
 			successCount++;
+			onlyWinningSeq.push(arrayLists[i]); 
 			for(j=0;j<arrayLists[i].length;j++){
 				// console.log("cell" + arrayLists[i][j][0] + "" + arrayLists[i][j][1]);
-				document.getElementById("cell" + arrayLists[i][j][0] + "" + arrayLists[i][j][1]).style.backgroundColor = "black";
+				document.getElementById("cell" + arrayLists[i][j][0] + "" + arrayLists[i][j][1]).style.backgroundColor = winningColor;
+				console.log("hier");
 			}
 		}
 		// else{
@@ -203,13 +206,22 @@ function visualizeWinningTokens(arrayLists){
 
 	}
 	if(successCount > 0){
-		return true;
+		return [true,onlyWinningSeq];
 	}
+	return[false,onlyWinningSeq];
 }
 
-function randomWinningColors(tempCol,tempRow){
-
-}   
+// function randomWinningColors(someArray){
+// 	while(abort){
+// 		console.log("abort = " + abort);
+// 		for(i=0;i<someArray.length;i++){
+// 			for(j=0;j<someArray[i].length;j++){
+// 				const randomColor = Math.floor(Math.random()*16777215).toString(16);
+// 				document.getElementById("cell" + someArray[i][j][0] + "" + someArray[i][j][1]).style.backgroundColor = randomColor;
+// 			}
+// 		}
+// 	}
+// }   
 
 //Check vertical win
 function verDown(col,curColHeight,winArrayVer){

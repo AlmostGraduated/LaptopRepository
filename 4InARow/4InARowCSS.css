@@ -50,6 +50,7 @@
         #boxed {
             border: 10px solid black ;
             width: 820px;
+            background-color: rgba(22, 110, 106, 0.2);
         }
         #P1{
             color: "blue";
