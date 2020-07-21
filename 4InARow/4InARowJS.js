@@ -1,24 +1,24 @@
 //User variables
-var namePlayerOne;
-var namePlayerTwo;
-var p1Filed = false;
-var p2Filed = false;      
+let namePlayerOne;
+let namePlayerTwo;
+let p1Filed = false;
+let p2Filed = false;      
 
 //Field and game variables
-var nrOfRows = 6;
-var nrOfColumns = 7;
-var seqStonesToWin = 4;
-var colHeight= [-1,-1,-1,-1,-1,-1,-1];
-var counter = 0;
-var startColor = 'blue';
-var secondColor = 'red';
-var winningColor = "rgba(6, 224, 38, 0.57)";
-var colorLastMove;
-var colorUpcomingMove;
-var field = [[-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1]]; //red or blue or -1
-var weHaveAWinner = false;
-var onclickIgnore = false;
-var abort = false;
+let nrOfRows = 6;
+let nrOfColumns = 7;
+let seqStonesToWin = 4;
+let colHeight= [-1,-1,-1,-1,-1,-1,-1];
+let counter = 0;
+let startColor = 'blue';
+let secondColor = 'red';
+let winningColor = "rgba(6, 224, 38, 0.57)";
+let colorLastMove;
+let colorUpcomingMove;
+let field = [[-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1]]; //red or blue or -1
+let weHaveAWinner = false;
+let onclickIgnore = false;
+let abort = false;
 
 //Player name entry behaviour
 function confirmName(player){
@@ -40,7 +40,7 @@ function confirmName(player){
 
 //Hide player name field after player names have been confirmed
 function hidePlayerNames(){
-	var x = document.getElementById("playerNamesDiv")
+	let x = document.getElementById("playerNamesDiv")
 	x.style.display = "none";
 	showGameField();
 }
@@ -87,7 +87,7 @@ function highlightOff(x,col,row){
 // Main algo for playing the game
 function algoStart(z,col,row){
 	if(abort==false){
-		var curColHeight = colHeight[col];                  //col height before token drop update
+		let curColHeight = colHeight[col];                  //col height before token drop update
 		if(validSelection(curColHeight)){                   //column is not yet full
 			counter++;
 			if(counter % 2 != 0){                           // uneven number == blue, 
@@ -99,7 +99,7 @@ function algoStart(z,col,row){
 			}
 			tokenDrop(z, col,curColHeight);                   // drop animation + update field
 			
-			var [winnerQ, winningCells] = winCheck(col,curColHeight);
+			let [winnerQ, winningCells] = winCheck(col,curColHeight);
 			console.log(winnerQ);
 			if(winnerQ){
 				document.getElementById("P1").innerHTML = "<span style='color:" + startColor + ";'>" + namePlayerOne + " --YOU WIN--" + "</span>";
@@ -138,7 +138,7 @@ function tokenDrop(z, col, curColHeight){
 }
 
 function dropAnimation(col){
-	tempCount = 0;
+	let tempCount = 0;
 	for(i=nrOfRows -1; i>colHeight[col]+1; i--){
 		tempCount++;
 		if(tempCount == 1){
@@ -165,11 +165,11 @@ function task(i,col,tempCount){
 
 // Check if there is a winner
 function winCheck(col, curColHeight){
-	var ArrayLists;
-	var winArrayHor = [[col,curColHeight + 1]];
-	var winArrayVer = [[col,curColHeight + 1]];
-	var winArrayDiagUpDown = [[col,curColHeight + 1]];
-	var winArrayDiagDownUp = [[col,curColHeight + 1]];
+	let ArrayLists;
+	let winArrayHor = [[col,curColHeight + 1]];
+	let winArrayVer = [[col,curColHeight + 1]];
+	let winArrayDiagUpDown = [[col,curColHeight + 1]];
+	let winArrayDiagDownUp = [[col,curColHeight + 1]];
 	horLeft(col,curColHeight,winArrayHor);
 	horRight(col,curColHeight,winArrayHor);
 	verDown(col,curColHeight,winArrayVer);
@@ -179,7 +179,7 @@ function winCheck(col, curColHeight){
 	diagLeftDown(col,curColHeight,winArrayDiagDownUp);
 	arrayLists = [winArrayHor,winArrayVer,winArrayDiagUpDown,winArrayDiagDownUp];
 	// console.log(JSON.stringify(arrayLists));
-	var [someBool, newArray] = visualizeWinningTokens(arrayLists);
+	let [someBool, newArray] = visualizeWinningTokens(arrayLists);
 	if(someBool){
 		return [true,newArray];
 	}
@@ -187,8 +187,8 @@ function winCheck(col, curColHeight){
 }
 
 function visualizeWinningTokens(arrayLists){
-	var successCount = 0;
-	var onlyWinningSeq =[];
+	let successCount = 0;
+	let onlyWinningSeq =[];
 	
 	for(i=0;i<arrayLists.length;i++){
 		if(arrayLists[i].length >= 4){
@@ -225,9 +225,9 @@ function visualizeWinningTokens(arrayLists){
 
 //Check vertical win
 function verDown(col,curColHeight,winArrayVer){
-	var cellsToCheck = true;
-	var tempCount = 0;
-	var tempColHeight = curColHeight+1;
+	let cellsToCheck = true;
+	let tempCount = 0;
+	let tempColHeight = curColHeight+1;
 	while(cellsToCheck){
 		// console.log(tempColHeight);
 		if(tempColHeight !=0){
@@ -250,10 +250,10 @@ function verDown(col,curColHeight,winArrayVer){
 
 //Check horizontal win
 function horLeft(col,curColHeight,winArrayHor){
-	var cellsToCheck = true;
-	var tempCount = 0;
-	var tempCol = col;
-	var tempColHeight = curColHeight +1;
+	let cellsToCheck = true;
+	let tempCount = 0;
+	let tempCol = col;
+	let tempColHeight = curColHeight +1;
 	while(cellsToCheck){
 		if(tempCol != 0){
 			tempCol--;
@@ -273,10 +273,10 @@ function horLeft(col,curColHeight,winArrayHor){
 }
 
 function horRight(col, curColHeight,winArrayHor){
-	var cellsToCheck = true;
-	var tempCount = 0;
-	var tempCol = col;
-	var tempColHeight = curColHeight +1;
+	let cellsToCheck = true;
+	let tempCount = 0;
+	let tempCol = col;
+	let tempColHeight = curColHeight +1;
 	while(cellsToCheck){
 		if(tempCol < 6){
 			tempCol++;
@@ -297,10 +297,10 @@ function horRight(col, curColHeight,winArrayHor){
 
 //Check diagonal win
 function diagLeftUp(col,curColHeight,winArrayDiagUpDown){
-	var cellsToCheck = true;
-	var tempCount = 0;
-	var tempCol = col;
-	var tempColHeight = curColHeight +1;
+	let cellsToCheck = true;
+	let tempCount = 0;
+	let tempCol = col;
+	let tempColHeight = curColHeight +1;
 	while(cellsToCheck){
 		if(tempCol != 0 && tempColHeight < 5){
 			tempCol--;
@@ -321,10 +321,10 @@ function diagLeftUp(col,curColHeight,winArrayDiagUpDown){
 }
 
 function diagRightDown(col,curColHeight,winArrayDiagUpDown){
-	var cellsToCheck = true;
-	var tempCount = 0;
-	var tempCol = col;
-	var tempColHeight = curColHeight +1;
+	let cellsToCheck = true;
+	let tempCount = 0;
+	let tempCol = col;
+	let tempColHeight = curColHeight +1;
 	while(cellsToCheck){
 		if(tempCol < 6 && tempColHeight != 0){
 			tempCol++;
@@ -345,10 +345,10 @@ function diagRightDown(col,curColHeight,winArrayDiagUpDown){
 }
 
 function diagRightUp(col,curColHeight,winArrayDiagDownUp){
-	var cellsToCheck = true;
-	var tempCount = 0;
-	var tempCol = col;
-	var tempColHeight = curColHeight +1;
+	let cellsToCheck = true;
+	let tempCount = 0;
+	let tempCol = col;
+	let tempColHeight = curColHeight +1;
 	while(cellsToCheck){
 		if(tempCol <6 && tempColHeight < 5){
 			tempCol++;
@@ -369,10 +369,10 @@ function diagRightUp(col,curColHeight,winArrayDiagDownUp){
 }
 
 function diagLeftDown(col,curColHeight,winArrayDiagDownUp){
-	var cellsToCheck = true;
-	var tempCount = 0;
-	var tempCol = col;
-	var tempColHeight = curColHeight +1;
+	let cellsToCheck = true;
+	let tempCount = 0;
+	let tempCol = col;
+	let tempColHeight = curColHeight +1;
 	while(cellsToCheck){
 		if(tempCol != 0 && tempColHeight != 0){
 			tempCol--;
