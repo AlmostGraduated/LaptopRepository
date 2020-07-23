@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="33613d6c-5fd8-45d2-8464-773964b5b440" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1ezlSNz9bjR900rm2QFQiF3107F" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../JAVA-Course/Nieuwe map/InterfacesChallenge" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="com.joranjansen.Main" />
+      <module name="Assignment2_Kermis" />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="33613d6c-5fd8-45d2-8464-773964b5b440" name="Default Changelist" comment="" />
+      <created>1595332300047</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1595332300047</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="-1506" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1595442250901">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1506" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1920.0.1920.1040/-3840.0.1920.1050/0.0.1536.832@-1920.0.1920.1040" timestamp="1595442250901" />
+    <state x="-3426" y="180" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1920.0.1920.1040/-3840.0.1920.1050/0.0.1536.832@-3840.0.1920.1050" timestamp="1595407288148" />
+    <state x="-3075" y="226" key="#com.intellij.ide.util.MemberChooser" timestamp="1595488289390">
+      <screen x="-3840" y="0" width="1920" height="1050" />
+    </state>
+    <state x="-1155" y="224" key="#com.intellij.ide.util.MemberChooser/-1920.0.1920.1040/-3840.0.1920.1050/0.0.1536.832@-1920.0.1920.1040" timestamp="1595442531507" />
+    <state x="-3075" y="226" key="#com.intellij.ide.util.MemberChooser/-1920.0.1920.1040/-3840.0.1920.1050/0.0.1536.832@-3840.0.1920.1050" timestamp="1595427113079" />
+    <state x="-1155" y="226" key="#com.intellij.ide.util.MemberChooser/0.0.1536.832/-1920.0.1920.1050/-3840.0.1920.1050@-1920.0.1920.1050" timestamp="1595341422484" />
+    <state x="-3075" y="226" key="#com.intellij.ide.util.MemberChooser/0.0.1536.832/-1920.0.1920.1050/-3840.0.1920.1050@-3840.0.1920.1050" timestamp="1595488289390" />
+    <state x="-3151" y="309" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1595407258650">
+      <screen x="-3840" y="0" width="1920" height="1050" />
+    </state>
+    <state x="-3151" y="309" key="#com.intellij.ide.util.TreeClassChooserDialog/-1920.0.1920.1040/-3840.0.1920.1050/0.0.1536.832@-3840.0.1920.1050" timestamp="1595407258650" />
+    <state x="-1275" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1595442166339">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1275" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/-1920.0.1920.1040/-3840.0.1920.1050/0.0.1536.832@-1920.0.1920.1040" timestamp="1595442166339" />
+    <state x="-3100" y="280" key="FileChooserDialogImpl" timestamp="1595422508056">
+      <screen x="-3840" y="0" width="1920" height="1050" />
+    </state>
+    <state x="-3100" y="280" key="FileChooserDialogImpl/-1920.0.1920.1040/-3840.0.1920.1050/0.0.1536.832@-3840.0.1920.1050" timestamp="1595422508056" />
+    <state width="1877" height="285" key="GridCell.Tab.0.bottom" timestamp="1595447440518">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="285" key="GridCell.Tab.0.bottom/-1920.0.1920.1040/-3840.0.1920.1050/0.0.1536.832@-1920.0.1920.1040" timestamp="1595447440518" />
+    <state width="1877" height="285" key="GridCell.Tab.0.bottom/-1920.0.1920.1040/-3840.0.1920.1050/0.0.1536.832@-3840.0.1920.1050" timestamp="1595428036189" />
+    <state width="1877" height="285" key="GridCell.Tab.0.center" timestamp="1595447440518">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="285" key="GridCell.Tab.0.center/-1920.0.1920.1040/-3840.0.1920.1050/0.0.1536.832@-1920.0.1920.1040" timestamp="1595447440518" />
+    <state width="1877" height="285" key="GridCell.Tab.0.center/-1920.0.1920.1040/-3840.0.1920.1050/0.0.1536.832@-3840.0.1920.1050" timestamp="1595428036189" />
+    <state width="1877" height="285" key="GridCell.Tab.0.left" timestamp="1595447440518">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="285" key="GridCell.Tab.0.left/-1920.0.1920.1040/-3840.0.1920.1050/0.0.1536.832@-1920.0.1920.1040" timestamp="1595447440518" />
+    <state width="1877" height="285" key="GridCell.Tab.0.left/-1920.0.1920.1040/-3840.0.1920.1050/0.0.1536.832@-3840.0.1920.1050" timestamp="1595428036189" />
+    <state width="1877" height="285" key="GridCell.Tab.0.right" timestamp="1595447440518">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="285" key="GridCell.Tab.0.right/-1920.0.1920.1040/-3840.0.1920.1050/0.0.1536.832@-1920.0.1920.1040" timestamp="1595447440518" />
+    <state width="1877" height="285" key="GridCell.Tab.0.right/-1920.0.1920.1040/-3840.0.1920.1050/0.0.1536.832@-3840.0.1920.1050" timestamp="1595428036189" />
+    <state x="-3119" y="502" key="com.intellij.ide.util.TipDialog" timestamp="1595487498200">
+      <screen x="-3840" y="0" width="1920" height="1050" />
+    </state>
+    <state x="-3119" y="502" key="com.intellij.ide.util.TipDialog/0.0.1536.832/-1920.0.1920.1050/-3840.0.1920.1050@-3840.0.1920.1050" timestamp="1595487498200" />
+  </component>
+</project>
