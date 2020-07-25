@@ -4,109 +4,185 @@ import javax.sound.midi.SysexMessage;
 import java.util.Scanner;
 
 public class Registry {
-    protected Attraction bumperCarts;
-    protected Attraction spin;
-    protected Attraction mirrorPalace;
-    protected Attraction ghostHouse;
-    protected Attraction hawaii;
-    protected Attraction ladderClimbing;
-    protected GamblingTaxInspector gamblingTaxInspector;
-    protected boolean alpha = true;
+    private Attraction bumperCarts;
+    private Attraction spin;
+    private Attraction mirrorPalace;
+    private Attraction ghostHouse;
+    private Attraction hawaii;
+    private Attraction ladderClimbing;
+    private TaxInspection taxInspection;
+    private boolean alpha = true;
 
 
-    public Registry() {
+    protected Registry() {
         this.bumperCarts = new BumperCarts();
         this.spin = new Spin();
         this.mirrorPalace = new MirrorPalace();
         this.ghostHouse = new GhostHouse();
         this.hawaii = new Hawaii();
         this.ladderClimbing = new LadderClimbing();
-        this.gamblingTaxInspector = new GamblingTaxInspector();
+        this.taxInspection = new TaxInspection();
     }
 
     protected void startSystem() {
 
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Welkom to the Carnaval Registry.");
+        System.out.println("==============================================================");
+        System.out.println("WELCOME TO THE CARNAVAL REGISTRY.");
+        System.out.println("==============================================================\n");
         while (alpha) {
-            gamblingTaxInspector.calculateTax((GamblingTaxable) ladderClimbing);
-            printOptions();
-            String userInput = scanner.next();
-            executeCommand(userInput);
+            printMainMenu();
+            exeMainUserInput();
         }
     }
 
-    protected void printOptions() {
+    private void printMainMenu() {
+        System.out.println("==============================================================");
+        System.out.println("==============================================================");
         System.out.println("Please choose one of the options:");
-        System.out.println("\t" + "1. Buy ticket(s)");
-        System.out.println("\t" + "2. Buy - Spin ticket(s)");
-        System.out.println("\t" + "3. Buy - MirrorPalace ticket(s)");
-        System.out.println("\t" + "4. Buy - GhostHouse ticket(s)");
-        System.out.println("\t" + "5. Buy - Hawaii ticket(s)");
-        System.out.println("\t" + "6. Buy - LadderClimbing ticket(s)");
-        System.out.println("\t" + "o. Show turnover carnaval");
-        System.out.println("\t" + "k. Show ticket sale carnaval");
-        System.out.println("\t" + "q. Shut-down system");
+        System.out.println("==============================================================");
+        System.out.println("\t" + "1. Purchase ticket(s)");
+        System.out.println("\t" + "2. Show carnaval tickets sale");
+        System.out.println("\t" + "3. Show carnaval financials");
+        System.out.println("\t" + "4. IRS is at the door");
+        System.out.println("\t" + "q. System shut-down");
+        System.out.println("==============================================================");
+        System.out.println("==============================================================\n");
     }
 
-    protected void executeCommand(String userInput){
-        Scanner scanner2 = new Scanner(System.in);
-        switch(userInput){
+    private void exeMainUserInput(){
+        Scanner scanner = new Scanner(System.in);
+        switch(scanner.next()){
             case "1":
-
-                System.out.println("You would like to buy (a) ticket(s) for?:");
-                buySomeTicket(scanner2.nextInt());
+                printSubMenuBuyTickets();
+                exeSubMenuBuyTickets();
                 break;
             case "2":
-                System.out.println("How many tickets would you like to buy?:");
-                spin.buyTickets(scanner2.nextInt());
+                showTicketOverview();
                 break;
             case "3":
-                System.out.println("How many tickets would you like to buy?:");
-                mirrorPalace.buyTickets(scanner2.nextInt());
+                showFinancialOverview();
                 break;
             case "4":
-                System.out.println("How many tickets would you like to buy?:");
-                ghostHouse.buyTickets(scanner2.nextInt());
-                break;
-            case "5":
-                System.out.println("How many tickets would you like to buy?:");
-                hawaii.buyTickets(scanner2.nextInt());
-                break;
-            case "6":
-                System.out.println("How many tickets would you like to buy?:");
-                ladderClimbing.buyTickets(scanner2.nextInt());
-                break;
-            case "o":
-                System.out.println("Carnaval turnover: $" + Attraction.carnavalTurnover);
-                break;
-            case "k":
-                System.out.println("Caraval ticket sale: " + Attraction.carnavalTicketsSold);
+                calculateWhatToPay(spin, ladderClimbing);
                 break;
             case "q":
-                alpha = false;
-                System.out.println("Shutting down, bye bye.... ");
+                shutDownSystem();
                 break;
-            default :
+            default:
+                System.out.println("This is not a valid option.");
+        }
+    }
+
+    private void printSubMenuBuyTickets() {
+        System.out.println("==============================================================");
+        System.out.println("==============================================================");
+        System.out.println("You wish to buy tickets for:");
+        System.out.println("==============================================================");
+        System.out.println("\t" + "1. Bumper carts");
+        System.out.println("\t" + "2. Spin (max. 5 tickets)");
+        System.out.println("\t" + "3. Mirror Palace");
+        System.out.println("\t" + "4. Ghost House");
+        System.out.println("\t" + "5. Hawaii (max. 10 tickets)");
+        System.out.println("\t" + "6. Ladder Climbing");
+        System.out.println("\t" + "7. Return to previous page");
+        System.out.println("==============================================================");
+        System.out.println("==============================================================\n");
+    }
+
+
+    private void exeSubMenuBuyTickets(){
+        Scanner scanner2 = new Scanner(System.in);
+        String attractionName;
+        switch(scanner2.next()){
+            case "1":
+                attractionName = "Bumper Carts";
+                bumperCarts.buyTickets(howManyTickets(attractionName));
+                break;
+            case "2":
+                attractionName = "Spin";
+                spin.buyTickets(howManyTickets(attractionName));
+                break;
+            case "3":
+                attractionName = "Mirror Palace";
+                mirrorPalace.buyTickets(howManyTickets(attractionName));
+                break;
+            case "4":
+                attractionName = "Ghost House";
+                ghostHouse.buyTickets(howManyTickets(attractionName));
+                break;
+            case "5":
+                attractionName = "Hawaii";
+                hawaii.buyTickets(howManyTickets(attractionName));
+                break;
+            case "6":
+                attractionName = "Ladder Climbing";
+                ladderClimbing.buyTickets(howManyTickets(attractionName));
+                break;
+            case "7":
+                printMainMenu();
+                exeMainUserInput();
+                break;
+            default:
                 System.out.println("This is not a valid option");
         }
     }
 
-    protected void buySomeTicket(int userInput){
-        Scanner scanner3 = new Scanner(System.in);
-        System.out.println();
-        switch(userInput){
-            case 1:
-                System.out.println("\t" + "1. Buy - BumperCarts ticket(s)");
-        }
+    private  int howManyTickets(String attractionName){
+        System.out.println("How many " + attractionName + " tickets do you wish to purchase?");
+        Scanner scanner2 = new Scanner(System.in);
+        return scanner2.nextInt();
     }
 
-//    System.out.println("\t" + "1. Buy ticket(s)");
-//        System.out.println("\t" + "2. Buy - Spin ticket(s)");
-//        System.out.println("\t" + "3. Buy - MirrorPalace ticket(s)");
-//        System.out.println("\t" + "4. Buy - GhostHouse ticket(s)");
-//        System.out.println("\t" + "5. Buy - Hawaii ticket(s)");
-//        System.out.println("\t" + "6. Buy - LadderClimbing ticket(s)");
+    private void showTicketOverview(){
+        System.out.println("==============================================================");
+        System.out.println("==============================================================");
+        System.out.println("CARNAVAL TICKET SALE OVERVIEW:\n");
+        System.out.println("==============================================================");
+        System.out.println("Total tickets sold: " + Attraction.carnavalTicketsSold + "\n");
+        System.out.println("==============================================================");
+        System.out.println("Tickets sold per attraction: ");
+        System.out.println("==============================================================");
+        System.out.println("\t" + "Bumper carts tickets sold: " + bumperCarts.totalTicketsSold);
+        System.out.println("\t" + "Spin tickets sold: " + spin.totalTicketsSold);
+        System.out.println("\t" + "Mirror Palace tickets sold: " + mirrorPalace.totalTicketsSold);
+        System.out.println("\t" + "Ghost House tickets sold: " + ghostHouse.totalTicketsSold);
+        System.out.println("\t" + "Hawaii tickets sold: " + hawaii.totalTicketsSold);
+        System.out.println("\t" + "Ladder Climbing tickets sold: " + ladderClimbing.totalTicketsSold);
+        System.out.println("==============================================================");
+        System.out.println("==============================================================\n");
+    }
 
+    private void showFinancialOverview(){
+        System.out.println("==============================================================");
+        System.out.println("==============================================================");
+        System.out.println("CARNAVAL FINANCIAL OVERVIEW:\n");
+        System.out.println("==============================================================");
+        System.out.println("Total turnover: " + Attraction.carnavalTurnover + "\n");
+        System.out.println("==============================================================");
+        System.out.println("Turnover per attraction: ");
+        System.out.println("==============================================================");
+        System.out.println("\t" + "Bumper carts turnover: " + bumperCarts.totalRevenue);
+        System.out.println("\t" + "Spin turnover: " + spin.totalRevenue);
+        System.out.println("\t" + "Mirror Palace turnover: " + mirrorPalace.totalRevenue);
+        System.out.println("\t" + "Ghost House turnover: " + ghostHouse.totalRevenue);
+        System.out.println("\t" + "Hawaii turnover: " + hawaii.totalRevenue);
+        System.out.println("\t" + "Ladder Climbing turnover: " + ladderClimbing.totalRevenue);
+        System.out.println("==============================================================");
+        System.out.println("==============================================================\n");
+    }
+
+    private void shutDownSystem(){
+        System.out.println("==============================================================");
+        System.out.println("==============================================================");
+        System.out.println("System is shutting down.....");
+        System.out.println("Bye bye");
+        System.out.println("==============================================================");
+        System.out.println("==============================================================\n");
+        alpha = false;
+    }
+
+    private void calculateWhatToPay(Attraction spin,Attraction ladderClimbing){
+        taxInspection.calculateTaxes(spin,ladderClimbing);
+    }
 }
 

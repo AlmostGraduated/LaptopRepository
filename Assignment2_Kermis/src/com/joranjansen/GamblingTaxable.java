@@ -2,6 +2,5 @@ package com.joranjansen;
 
 public interface GamblingTaxable {
 
-    public double gamblingTax(double factor);
-
+    public double financialImpact(double taxationFactor);
 }
