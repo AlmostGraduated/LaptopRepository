@@ -20,7 +20,7 @@ public class Attraction {
         this.totalTicketsSold += nrTickets;
         this.totalRevenue += (this.ticketPrice * nrTickets);
         earnedSinceLastTaxAgentVisit += (this.ticketPrice * nrTickets);
-        System.out.println("$$$$$$$$$$$$$$$$$$$$ " + (earnedSinceLastTaxAgentVisit += (this.ticketPrice * nrTickets)) + " $$$$$$$$$$$$$$$$$$$$");
+        System.out.println((earnedSinceLastTaxAgentVisit += (this.ticketPrice * nrTickets)));
         this.carnavalTurnover += (this.ticketPrice * nrTickets);
         this.carnavalTicketsSold += nrTickets;
         this.currentRunStreak += nrTickets;

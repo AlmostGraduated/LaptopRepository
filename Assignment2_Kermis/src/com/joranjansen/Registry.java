@@ -25,7 +25,6 @@ public class Registry {
     }
 
     protected void startSystem() {
-
         System.out.println("==============================================================");
         System.out.println("WELCOME TO THE CARNAVAL REGISTRY.");
         System.out.println("==============================================================\n");
@@ -179,6 +178,7 @@ public class Registry {
         System.out.println("==============================================================");
         System.out.println("==============================================================\n");
         alpha = false;
+        System.exit(0);
     }
 
     private void calculateWhatToPay(Attraction spin,Attraction ladderClimbing){

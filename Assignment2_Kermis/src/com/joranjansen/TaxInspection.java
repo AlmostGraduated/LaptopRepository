@@ -18,18 +18,23 @@ public class TaxInspection {
         this.totalLadderClimbingTaxPaid += tempLadderClimbing;
         System.out.println("==============================================================");
         System.out.println("==============================================================");
-        System.out.println("Taxes Overview:");
+        System.out.println("TAXES OVERVIEW:");
         System.out.println("==============================================================");
         System.out.println("Current payment:");
+        System.out.println("==============================================================");
         System.out.println("\t" + "Total payed: " + (tempSpinTaxes + tempLadderClimbing));
+        System.out.println("==============================================================");
         System.out.println("\t" + "\t" + "Spin: " + tempSpinTaxes);
         System.out.println("\t" + "\t" + "Ladder Climbing: " + tempLadderClimbing);
         System.out.println("==============================================================");
+        System.out.println("==============================================================");
         System.out.println("Total taxes paid since opening: ");
+        System.out.println("==============================================================");
         System.out.println("\t" + "Total payed: " + (totalSpinTaxPaid +  totalLadderClimbingTaxPaid));
+        System.out.println("==============================================================");
         System.out.println("\t" + "\t" + "Spin: " + totalSpinTaxPaid);
         System.out.println("\t" + "\t" + "Ladder Climbing: " + totalLadderClimbingTaxPaid);
         System.out.println("==============================================================");
-        System.out.println("==============================================================");
+        System.out.println("==============================================================\n");
     }
 }

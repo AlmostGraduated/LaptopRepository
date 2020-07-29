@@ -22,7 +22,8 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../DesignPattern_Singleton" />
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application">
@@ -73,9 +74,10 @@
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
     <state x="-1230" y="272" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1920.0.1920.1040/-3840.0.1920.1050/0.0.1536.832@-1920.0.1920.1040" timestamp="1595669680713" />
-    <state x="-3100" y="280" key="FileChooserDialogImpl" timestamp="1595489489018">
-      <screen x="-3840" y="0" width="1920" height="1050" />
+    <state x="-1180" y="277" key="FileChooserDialogImpl" timestamp="1595761271642">
+      <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
+    <state x="-1180" y="277" key="FileChooserDialogImpl/-1920.0.1920.1040/-3840.0.1920.1050/0.0.1536.832@-1920.0.1920.1040" timestamp="1595761271642" />
     <state x="-3100" y="280" key="FileChooserDialogImpl/-1920.0.1920.1040/-3840.0.1920.1050/0.0.1536.832@-3840.0.1920.1050" timestamp="1595422508056" />
     <state x="-3100" y="280" key="FileChooserDialogImpl/0.0.1536.832/-1920.0.1920.1050/-3840.0.1920.1050@-3840.0.1920.1050" timestamp="1595489489018" />
     <state width="1877" height="507" key="GridCell.Tab.0.bottom" timestamp="1595678184519">
@@ -103,9 +105,10 @@
     </state>
     <state x="-3119" y="502" key="com.intellij.ide.util.TipDialog/-1920.0.1920.1040/-3840.0.1920.1050/0.0.1536.832@-3840.0.1920.1050" timestamp="1595583725705" />
     <state x="-3119" y="502" key="com.intellij.ide.util.TipDialog/0.0.1536.832/-1920.0.1920.1050/-3840.0.1920.1050@-3840.0.1920.1050" timestamp="1595487498200" />
-    <state x="-3498" y="145" key="new project wizard" timestamp="1595492865153">
+    <state x="-3498" y="145" key="new project wizard" timestamp="1596009918619">
       <screen x="-3840" y="0" width="1920" height="1050" />
     </state>
+    <state x="-3498" y="145" key="new project wizard/-1920.0.1920.1040/-3840.0.1920.1050/0.0.1536.832@-3840.0.1920.1050" timestamp="1596009918619" />
     <state x="-3498" y="145" key="new project wizard/0.0.1536.832/-1920.0.1920.1050/-3840.0.1920.1050@-3840.0.1920.1050" timestamp="1595492865153" />
     <state x="-1297" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1595668054532">
       <screen x="-1920" y="0" width="1920" height="1040" />
